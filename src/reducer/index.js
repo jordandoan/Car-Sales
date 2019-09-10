@@ -1,10 +1,14 @@
+import { isTemplateElement } from "@babel/types";
+
 export const reducer = (state = initialState, action) => {
   console.log(state);
   switch(action.type){
     case "ADD_FEATURE":
       console.log("add");
       const newStore = state.store.filter((feature) => feature.id != action.payload.id);
-      return {...state, store: newStore, car: {features: [...state.car.features, action.payload]}}
+      const newCar = {...state.car, features: [...state.car.features, action.payload]};
+      const newAddPrice = state.additionalPrice + action.payload.price
+      return {...state, additionalPrice: newAddPrice, car: newCar, store: newStore}
     case "REMOVE_FEATURE":
       console.log("remove");
       return state
