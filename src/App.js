@@ -5,7 +5,6 @@ import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-import TestComponent from './components/TestComponent';
 
 const App = (state) => {
   return (
@@ -13,7 +12,6 @@ const App = (state) => {
       <div className="box">
         <Header car={state.car} />
         <AddedFeatures car={state.car} />
-        <TestComponent />
       </div>
       <div className="box">
         <AdditionalFeatures store={state.store} />
