@@ -1,31 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
-import Header from './components/Header';
-import AddedFeatures from './components/AddedFeatures';
-import AdditionalFeatures from './components/AdditionalFeatures';
-import Total from './components/Total';
+import NavBar from './components/NavBar';
+import Cars from './components/Cars';
+import Car from './components/Car';
 
-const App = (state) => {
+const App = () => {
   return (
-    <div className="boxes">
-      <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
-      </div>
-      <div className="box">
-        <AdditionalFeatures store={state.store} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
-      </div>
+    <div className="container">
+      <NavBar />
+      <Route exact path="/" component={Cars} />
+      <Route exact path="/:id" component={Car} />
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    car: state.car,
-    additionalPrice: state.additionalPrice,
-    store: state.store
-  }
-}
-export default connect(mapStateToProps, {})(App);
+export default App;
